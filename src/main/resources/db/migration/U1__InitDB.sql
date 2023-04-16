@@ -1,0 +1,17 @@
+alter table if exists email_confirmations drop constraint if exists fk_user_id;
+alter table if exists files drop constraint if exists fk_uploader_id;
+alter table if exists tasks drop constraint if exists fk_creator_id;
+alter table if exists tasks drop constraint if exists fk_performer_id;
+alter table if exists tasks_comments drop constraint if exists fk_task_id;
+alter table if exists tasks_files drop constraint if exists fk_task_id;
+alter table if exists tasks_files drop constraint if exists fk_file_id;
+alter table if exists tasks_history drop constraint if exists fk_status_id;
+alter table if exists tasks_history drop constraint if exists fk_task_id;
+drop table if exists email_confirmations cascade;
+drop table if exists files cascade;
+drop table if exists tasks cascade;
+drop table if exists tasks_comments cascade;
+drop table if exists tasks_files cascade;
+drop table if exists tasks_history cascade;
+drop table if exists tasks_statuses cascade;
+drop table if exists users cascade;
