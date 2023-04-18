@@ -3,8 +3,8 @@ create table email_confirmations
     id                bigserial    not null,
     user_id           bigint       not null UNIQUE,
     confirmation_hash varchar(255) not null,
-    created_at        timestamp(6) not null,
-    updated_at        timestamp(6) not null,
+    created_at        timestamp(6) not null DEFAULT NOW()::timestamp,
+    updated_at        timestamp(6) not null DEFAULT NOW()::timestamp,
     primary key (id)
 );
 create table files
@@ -13,8 +13,8 @@ create table files
     name        varchar(255) not null,
     path        text         not null,
     uploader_id bigint       not null,
-    created_at  timestamp(6) not null,
-    updated_at  timestamp(6) not null,
+    created_at  timestamp(6) not null DEFAULT NOW()::timestamp,
+    updated_at  timestamp(6) not null DEFAULT NOW()::timestamp,
     primary key (id)
 );
 create table tasks
@@ -28,8 +28,8 @@ create table tasks
     creator_id     bigint,
     parent_task_id bigint,
     performer_id   bigint,
-    created_at     timestamp(6),
-    updated_at     timestamp(6),
+    created_at     timestamp(6) not null DEFAULT NOW()::timestamp,
+    updated_at     timestamp(6) not null DEFAULT NOW()::timestamp,
     primary key (id)
 );
 create table tasks_comments
@@ -37,8 +37,8 @@ create table tasks_comments
     id         bigserial    not null,
     task_id    bigint,
     message    text,
-    created_at timestamp(6) not null,
-    updated_at timestamp(6) not null,
+    created_at timestamp(6) not null DEFAULT NOW()::timestamp,
+    updated_at timestamp(6) not null DEFAULT NOW()::timestamp,
     primary key (id)
 );
 create table tasks_files
@@ -51,7 +51,7 @@ create table tasks_history
     id         bigserial not null,
     status_id  bigint,
     task_id    bigint,
-    created_at timestamp(6),
+    created_at timestamp(6) not null DEFAULT NOW()::timestamp,
     primary key (id)
 );
 create table tasks_statuses
@@ -71,8 +71,8 @@ create table users
     last_name     varchar(255) not null,
     middle_name   varchar(255),
     is_admin      boolean      not null,
-    updated_at    timestamp(6) not null,
-    created_at    timestamp(6) not null,
+    updated_at    timestamp(6) not null DEFAULT NOW()::timestamp,
+    created_at    timestamp(6) not null DEFAULT NOW()::timestamp,
     primary key (id)
 );
 
