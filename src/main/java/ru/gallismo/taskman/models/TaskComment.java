@@ -23,7 +23,17 @@ public class TaskComment {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
+    @PrePersist
+    private void create() {
+        createdAt = new Date();
+    }
+
     @Column(name = "updated_at", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+
+    @PreUpdate
+    private void update() {
+        updatedAt = new Date();
+    }
 }
