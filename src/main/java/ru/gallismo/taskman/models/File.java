@@ -3,6 +3,7 @@ package ru.gallismo.taskman.models;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +27,9 @@ public class File {
     )
     private List<Task> tasks;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "path", nullable = false, columnDefinition = "text")
     private String path;
 
@@ -33,7 +37,19 @@ public class File {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
+    @PrePersist
+    private void create() {
+        createdAt = new Date();
+    }
+
     @Column(name = "updated_at", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+
+    @PreUpdate
+    private void update() {
+        updatedAt = new Date();
+    }
+
+
 }

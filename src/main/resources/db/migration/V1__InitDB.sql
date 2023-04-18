@@ -10,6 +10,7 @@ create table email_confirmations
 create table files
 (
     id          bigserial    not null,
+    name        varchar(255) not null,
     path        text         not null,
     uploader_id bigint       not null,
     created_at  timestamp(6) not null,
@@ -48,9 +49,9 @@ create table tasks_files
 create table tasks_history
 (
     id         bigserial not null,
-    created_at timestamp(6),
     status_id  bigint,
     task_id    bigint,
+    created_at timestamp(6),
     primary key (id)
 );
 create table tasks_statuses

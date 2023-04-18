@@ -23,4 +23,9 @@ public class TaskHistory {
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+
+    @PrePersist
+    private void create() {
+        createdAt = new Date();
+    }
 }
