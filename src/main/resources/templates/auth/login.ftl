@@ -1,4 +1,5 @@
-<#include '../master.ftl'>
+<#include '../master.ftl'/>
+<#import '/spring.ftl' as spring/>
 
 <#macro page_title>Вход</#macro>
 <#macro page_body>
