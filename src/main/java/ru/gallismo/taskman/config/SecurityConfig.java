@@ -28,7 +28,7 @@ public class SecurityConfig {
                 .formLogin().loginPage("/auth/login")
                 .loginProcessingUrl("/auth/login")
                 .defaultSuccessUrl("/", true)
-                .failureUrl("/auth/login?error");
+                .failureUrl("/auth/login");
 
         return http.build();
     }
