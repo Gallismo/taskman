@@ -1,0 +1,90 @@
+
+entity Topic {
+	name String required
+    text String required
+}
+
+entity Material {
+	path String required
+    name String required
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Test {
+	name String required
+}
+
+entity TestQuestion {
+	name String required
+    correctAnswer String required
+}
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity TestAnswer {
+	answer String
+}
+
+/**
+ * The Employee entity.
+ */
+entity People {
+	/**
+	* The firstname attribute.
+	*/
+	firstName String
+}
+
+entity PeopleTestList {
+	score Integer
+    scorePercent Integer
+    start Instant
+    end Instant
+}
+
+entity PeopleTestListAnswer {
+	isCorrect Boolean
+}
+
+relationship OneToMany {
+	Material{topic} to Topic
+}
+
+relationship OneToMany {
+	Test{topic} to Topic
+}
+
+relationship OneToMany {
+	TestQuestion{test} to Test
+}
+
+relationship OneToMany {
+	TestAnswer{question} to TestQuestion
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	PeopleTestList{person} to People
+}
+
+relationship OneToMany {
+	PeopleTestListAnswer{answer} to TestAnswer
+    PeopleTestListAnswer{question} to TestQuestion
+    PeopleTestListAnswer{personTest} to PeopleTestList
+}
+
+// Set pagination options
+paginate all with infinite-scroll except Topic
+paginate Topic with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
